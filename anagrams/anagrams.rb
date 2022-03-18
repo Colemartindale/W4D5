@@ -29,15 +29,27 @@ def second_anagram?(str1, str2)
     end
     return true
 end
-p second_anagram?("cats!", "stac!")
-p second_anagram?("cats!", "sta!")
-p second_anagram?("cats!", "sta!w")
+# p second_anagram?("cats!", "stac!")
+# p second_anagram?("cats!", "sta!")
+# p second_anagram?("cats!", "sta!w")
 
 #O(n log n)
 def third_anagram?(str1, str2)
     str1.split("").sort == str2.split("").sort
 end
 
-p third_anagram?("cats!", "stac!")
-p third_anagram?("cats!", "sta!")
-p third_anagram?("cats!", "sta!w")
+# p third_anagram?("cats!", "stac!")
+# p third_anagram?("cats!", "sta!")
+# p third_anagram?("cats!", "sta!w")
+
+#O(n)
+def fourth_anagram?(str1, str2)
+    hash = Hash.new(0)
+    str1.each_char { |char| hash[char] += 1 }
+    str2.each_char { |char| hash[char] -= 1 }
+    hash.values.all? { |val| val == 0 }
+end
+
+p fourth_anagram?("cats!", "stac!")
+p fourth_anagram?("cats!", "sta!")
+p fourth_anagram?("cats!", "sta!w")
